@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 // Middlewares
 const corsOpts = {
-  origin: ['https://fitness-app-mern.vercel.app/', 'http://localhost:5173'],
+  origin: ['https://fitness-app-mern.vercel.app', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type'],
   exposedHeaders: ['Content-Type']
