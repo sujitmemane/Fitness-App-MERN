@@ -19,26 +19,38 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 
 
-// Middlewares
 const corsOpts = {
   origin: ['https://fitness-app-mern.vercel.app', 'http://localhost:5173'],
-  methods: ['GET', 'POST', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type'],
-  exposedHeaders: ['Content-Type']
+  exposedHeaders: ['Content-Type'],
 };
 
-app.use(cors(corsOpts))
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/api/workouts", workoutRoutes)
-app.use("/api/users",userRoutes)
-app.use("/api/calories",caloriesRoutes)
+app.use(cors(corsOpts));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api/workouts', workoutRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/calories', caloriesRoutes);
 
+// Handle CORS preflight requests
+app.options('/api/workouts', cors());
+app.options('/api/users', cors());
+app.options('/api/calories', cors());
+
+// Handle CORS error
+app.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).json({ error: 'Invalid token or missing credentials' });
+  } else {
+    next();
+  }
+});
 
 app.get('/', (req, res) => {
-  res.send('Hello Wor ld!')
-})
+  res.send('Hello World!');
+});
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log(`Example app listening on port ${process.env.PORT}`)
-})
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`);
+});
