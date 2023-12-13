@@ -27,6 +27,7 @@ const corsOpts = {
   allowedHeaders: ['Content-Type'],
   exposedHeaders: ['Content-Type']
 };
+
 app.use(cors(corsOpts));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
