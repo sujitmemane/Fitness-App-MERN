@@ -109,7 +109,7 @@ const Calories = () => {
 
   const getCaloriesData =async()=>{
     try {
-      const response = await fetch(`https://fitnessapp-oexf.onrender.com/api/workouts/api/calories/`, {
+      const response = await fetch(`https://fitnessapp-oexf.onrender.com/api/calories/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
