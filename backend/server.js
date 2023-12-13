@@ -21,14 +21,13 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 // Middlewares
 const corsOpts = {
-  origin: '*',
-  credentials: true,
-  methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
+  origin: ['https://fitness-app-mern.vercel.app/', 'http://localhost:5173'],
+  methods: ['GET', 'POST', 'HEAD', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type'],
   exposedHeaders: ['Content-Type']
 };
 
-app.use(cors(corsOpts));
+app.use(cors(corsOpts))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/workouts", workoutRoutes)

@@ -4,7 +4,7 @@ import User from "../models/user.js"
 export const authMiddleware = async(req,res,next)=>{
     const {authorization} = req.headers
     if(!authorization){
-        res.json({success:false,message:"Authorization Token Required"})
+        res.json({success:false,message:"Please Login or Register"})
     }
     const token = authorization.split(" ")[1]
     try {
