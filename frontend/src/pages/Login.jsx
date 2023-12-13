@@ -21,7 +21,7 @@ const Login = () => {
   });
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("https://fitnessapp-oexf.onrender.com/api/workouts/api/users/login", {
+      const response = await fetch("https://fitnessapp-oexf.onrender.com/api/users/login", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

@@ -82,7 +82,7 @@ const Calories = () => {
     };
 
     try {
-      const response = await fetch("https://fitnessapp-oexf.onrender.com/api/workouts/api/calories", {
+      const response = await fetch("https://fitnessapp-oexf.onrender.com/api/calories/", {
         method: "POST",
         body: JSON.stringify(sdata),
         headers: {

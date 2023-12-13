@@ -20,7 +20,7 @@ const WorkoutForm = ({ onFormSubmit }) => {
   const onSubmit = async (data) => {
     try {
       console.log(data);
-      const response = await fetch("https://fitnessapp-oexf.onrender.com/api/workouts/api/workouts", {
+      const response = await fetch("https://fitnessapp-oexf.onrender.com/api/workouts", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -28,7 +28,7 @@ const WorkoutForm = ({ onFormSubmit }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-
+     console.log("fefefe")
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }

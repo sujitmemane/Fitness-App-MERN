@@ -34,7 +34,7 @@ const WorkoutElement = ({ data, onFormSubmit }) => {
   const token = localStorage.getItem("token");
   const onDeleteWorkout = async (id) => {
     try {
-      const response = await fetch(`https://fitnessapp-oexf.onrender.com/api/workouts/api/workouts/${id}`, {
+      const response = await fetch(`https://fitnessapp-oexf.onrender.com/api/workouts/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

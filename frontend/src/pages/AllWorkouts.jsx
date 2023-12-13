@@ -21,6 +21,7 @@ const AllWorkouts = () => {
       }
 
       const result = await response.json();
+      console.log(result,"result")
       setAllWorkouts(result?.data);
     } catch (error) {
       setError(error.message);
