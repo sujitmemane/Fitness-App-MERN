@@ -22,7 +22,7 @@ const Register = () => {
   });
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:4000/api/users/register", {
+      const response = await fetch("https://fitnessapp-oexf.onrender.com/api/workouts/api/users/register", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

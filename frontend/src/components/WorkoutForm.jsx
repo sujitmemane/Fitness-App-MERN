@@ -20,7 +20,7 @@ const WorkoutForm = ({ onFormSubmit }) => {
   const onSubmit = async (data) => {
     try {
       console.log(data);
-      const response = await fetch("http://localhost:4000/api/workouts", {
+      const response = await fetch("https://fitnessapp-oexf.onrender.com/api/workouts/api/workouts", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

@@ -9,7 +9,7 @@ const AllWorkouts = () => {
 
   const fetchWorkouts = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/workouts", {
+      const response = await fetch("https://fitnessapp-oexf.onrender.com/api/workouts", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
