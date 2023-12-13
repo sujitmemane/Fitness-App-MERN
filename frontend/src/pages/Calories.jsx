@@ -55,6 +55,26 @@ const Calories = () => {
     name: "calories",
     control,
   });
+  const getCaloriesData =async()=>{
+    try {
+      const response = await fetch(`https://fitnessapp-oexf.onrender.com/api/calories/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log(result)
+      setCaloriesData(result?.data);
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -72,6 +92,8 @@ const Calories = () => {
       { min: 2001, max: Infinity, count: 5 },
     ];
 
+  
+  
     const count =
       calorieRanges.find(
         (range) => totalCalories >= range.min && totalCalories <= range.max
@@ -97,8 +119,9 @@ const Calories = () => {
       }
 
       const result = await response.json();
-      toast.success("Data Saved")
       getCaloriesData()
+      toast.success("Data Saved")
+
       console.log(result);
     } catch (error) {
       console.error("Error submitting form:", error.message);
@@ -108,27 +131,6 @@ const Calories = () => {
   };
    
 
-
-  const getCaloriesData =async()=>{
-    try {
-      const response = await fetch(`https://fitnessapp-oexf.onrender.com/api/calories/`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const result = await response.json();
-      console.log(result)
-      setCaloriesData(result?.data);
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   useEffect(()=>{
     getCaloriesData()
