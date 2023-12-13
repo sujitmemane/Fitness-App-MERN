@@ -1,28 +1,24 @@
-import express from "express"
-import dotenv from "dotenv"
-import workoutRoutes from "./routes/workouts.js"
-import userRoutes from "./routes/users.js"
-import caloriesRoutes from "./routes/calories.js"
-import cors from "cors"
-import bodyParser from "body-parser"
-import mongoose from "mongoose"
+import express from 'express';
+import dotenv from 'dotenv';
+import workoutRoutes from './routes/workouts.js';
+import userRoutes from './routes/users.js';
+import caloriesRoutes from './routes/calories.js';
+import cors from 'cors';
+import mongoose from 'mongoose';
 
-dotenv.config()
-const app = express()
-
+dotenv.config();
+const app = express();
 
 mongoose.connect(process.env.MONGODB_URL, {
-  dbName: "Fitness",
-  socketTimeoutMS: 30000, 
+  dbName: 'Fitness',
+  socketTimeoutMS: 30000,
   useUnifiedTopology: true,
-}).then(() => console.log("DB Connected")).catch((err) => console.error("Error connecting to the database:", err));
+}).then(() => console.log('DB Connected')).catch((err) => console.error('Error connecting to the database:', err));
 
-
-
+// Middlewares
 const corsOpts = {
   origin: ['https://fitness-app-mern.vercel.app', 'http://localhost:5173'],
-  allowedHeaders: ['Content-Type'],
-  exposedHeaders: ['Content-Type'],
+  credentials: true,
 };
 
 app.use(cors(corsOpts));
