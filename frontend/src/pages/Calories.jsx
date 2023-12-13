@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 import { useForm, useFieldArray } from "react-hook-form";
+import { toast } from "react-toastify";
 
 function formatDate(inputDate) {
   const months = [
@@ -96,6 +97,7 @@ const Calories = () => {
       }
 
       const result = await response.json();
+      toast.success("Data Saved")
       getCaloriesData()
       console.log(result);
     } catch (error) {
