@@ -32,7 +32,7 @@ const Register = () => {
 
       const result = await response.json();
 
-      if (response.ok) {
+      if (result?.success===true) {
         toast.success(result?.message, { autoClose: 3000 });
         localStorage.setItem("token", result?.user?.token);
         localStorage.setItem("username", result?.user?.username);
